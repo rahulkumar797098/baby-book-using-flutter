@@ -30,7 +30,7 @@ class _MusicInstrumentsScreenState extends State<MusicInstrumentsScreen> {
         });
       }
       // Play the selected audio
-      await _audioPlayer.play(AssetSource(animals[index]["sound"]));
+      await _audioPlayer.play(AssetSource(music[index]["sound"]));
       setState(() {
         isPlaying = true;
         _currentIndex = index;
@@ -59,7 +59,7 @@ class _MusicInstrumentsScreenState extends State<MusicInstrumentsScreen> {
     }
   }
 
-  final List<Map<String, dynamic>> animals = [
+  final List<Map<String, dynamic>> music = [
     {"image": "assets/music/pia.png", "name": "Piano", "hindi": "पियानो", "sound": "sound/pia.mp3"},
     {"image": "assets/music/gui.png", "name": "Guitar", "hindi": "गिटार", "sound": "sound/gui.mp3"},
     {"image": "assets/music/vio.png", "name": "Violin", "hindi": "वायोलिन", "sound": "sound/vio.mp3"},
@@ -91,7 +91,7 @@ class _MusicInstrumentsScreenState extends State<MusicInstrumentsScreen> {
         centerTitle: true,
       ),
       body: GridView.builder(
-        itemCount: animals.length,
+        itemCount: music.length,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2 // Number of columns
         ),
@@ -107,7 +107,7 @@ class _MusicInstrumentsScreenState extends State<MusicInstrumentsScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Image.asset(
-                      animals[index]["image"],
+                      music[index]["image"],
                       width: 100,
                       height: 100,
                       fit: BoxFit.contain,
@@ -116,11 +116,11 @@ class _MusicInstrumentsScreenState extends State<MusicInstrumentsScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Text(
-                          animals[index]["name"],
+                          music[index]["name"],
                           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                         ),
                         Text(
-                          animals[index]["hindi"],
+                          music[index]["hindi"],
                           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                         ),
                       ],

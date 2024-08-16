@@ -9,78 +9,42 @@ class TransportScreen extends StatefulWidget {
 }
 
 class _TransportScreenState extends State<TransportScreen> {
-  final AudioPlayer _audioPlayer = AudioPlayer();
-  bool isPlaying = false;
-  int _currentIndex = -1;
+  // Transport 1
+  final List<Map<String, dynamic>> transport2 = [
+    {
+      "image": "assets/transport/bicycle.png",
+      "name": "Bi-cycle",
+    },
+    {
+      "image": "assets/transport/motercycle.png",
+      "name": "Moter cycle",
+    },
+    {
+      "image": "assets/transport/car.png",
+      "name": "Car",
+    },
+    {
+      "image": "assets/transport/jeep.png",
+      "name": "Jeep",
+    },
+    {
+      "image": "assets/transport/auto.png",
+      "name": "Auto",
+    },
+    {
+      "image": "assets/transport/erickshaw.png",
+      "name": "E Richshaw",
+    },
+    {
+      "image": "assets/transport/erickshaw.png",
+      "name": "E Richshaw",
+    },
+  ];
 
-  @override
-  void dispose() {
-    _audioPlayer.dispose();
-    super.dispose();
-  }
-
-  Future<void> _playAudio(int index) async {
-    try {
-      // Stop previously playing audio if any
-      if (_currentIndex != -1 && _currentIndex != index) {
-        await _audioPlayer.stop();
-        setState(() {
-          isPlaying = false;
-          _currentIndex = -1;
-        });
-      }
-      // Play the selected audio
-      await _audioPlayer.play(AssetSource(animals[index]["sound"]));
-      setState(() {
-        isPlaying = true;
-        _currentIndex = index;
-      });
-    } catch (e) {
-      print("Play Error: $e");
-    }
-  }
-
-  Future<void> _pauseAudio() async {
-    try {
-      await _audioPlayer.pause();
-      setState(() {
-        isPlaying = false;
-      });
-    } catch (e) {
-      print("Pause Error: $e");
-    }
-  }
-
-  Future<void> _toggleAudio(int index) async {
-    if (isPlaying && _currentIndex == index) {
-      await _pauseAudio();
-    } else {
-      await _playAudio(index);
-    }
-  }
-
-  final List<Map<String, dynamic>> animals = [
-    {"image": "assets/music/pia.png", "name": "Piano", "hindi": "पियानो", "sound": "sound/pia.mp3"},
-    {"image": "assets/music/gui.png", "name": "Guitar", "hindi": "गिटार", "sound": "sound/gui.mp3"},
-    {"image": "assets/music/vio.png", "name": "Violin", "hindi": "वायोलिन", "sound": "sound/vio.mp3"},
-    {"image": "assets/music/dru.png", "name": "Drums", "hindi": "ड्रम", "sound": "sound/dru.mp3"},
-    {"image": "assets/music/tab.png", "name": "Tabla", "hindi": "तबला", "sound": "sound/tab.mp3"},
-    {"image": "assets/music/flu.png", "name": "Flute", "hindi": "बांसुरी", "sound": "sound/flu.mp3"},
-    {"image": "assets/music/tru.png", "name": "Trumpet", "hindi": "तुरही", "sound": "sound/tru.mp3"},
-    {"image": "assets/music/sax.png", "name": "Saxophone", "hindi": "सैक्सोफोन", "sound": "sound/sax.mp3"},
-    {"image": "assets/music/cel.png", "name": "Cello", "hindi": "वायलनचेलो", "sound": "sound/cel.mp3"},
-    {"image": "assets/music/cla.png", "name": "Clarinet", "hindi": "शहनाई", "sound": "sound/cla.mp3"},
-    {"image": "assets/music/bas.png", "name": "Bass Guitar", "hindi": "बास गिटार", "sound": "sound/bas.mp3"},
-    {"image": "assets/music/acc.png", "name": "Accordion", "hindi": "अकॉर्डियन", "sound": "sound/acc.mp3"},
-    {"image": "assets/music/xyl.png", "name": "Xylophone", "hindi": "सिलाफ़न", "sound": "sound/xyl.mp3"},
-    {"image": "assets/music/bag.png", "name": "Bagpipes", "hindi": "बैगपाइप", "sound": "sound/bag.mp3"},
-    {"image": "assets/music/ele.png", "name": "Electric Guitar", "hindi": "विद्युत गिटार", "sound": "sound/ele.mp3"},
-    {"image": "assets/music/har.png", "name": "Harmonica", "hindi": "अकार्डियन", "sound": "sound/har.mp3"},
-    {"image": "assets/music/sit.png", "name": "Sitar", "hindi": "सितार", "sound": "sound/sit.mp3"},
-    {"image": "assets/music/cym.png", "name": "Cymbals", "hindi": "झांझ", "sound": "sound/cym.mp3"},
-    {"image": "assets/music/tam.png", "name": "Tambourine", "hindi": "डफ", "sound": "sound/tam.mp3"},
-    {"image": "assets/music/whi.png", "name": "Whistle", "hindi": "सीटी", "sound": "sound/whi.mp3"},
-
+  final List<Map<String, dynamic>> transport1 = [
+    {"image": "assets/transport/airoplane.png", "title": "Airoplane"},
+    {"image": "assets/transport/bus.png", "title": "Bus"},
+    {"image": "assets/transport/halicopter.png", "title": "Helicopter"},
   ];
 
   @override
@@ -90,47 +54,106 @@ class _TransportScreenState extends State<TransportScreen> {
         title: const Text("Transport"),
         centerTitle: true,
       ),
-      body: GridView.builder(
-        itemCount: animals.length,
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2 // Number of columns
-        ),
-        itemBuilder: (BuildContext context, int index) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
-            child: Card(
-              elevation: 5,
-              shadowColor: Colors.red,
-              child: InkWell(
-                onTap: () => _toggleAudio(index),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Image.asset(
-                      animals[index]["image"],
-                      width: 100,
-                      height: 100,
-                      fit: BoxFit.contain,
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+
+      // ............BODY............//
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            for (int i = 0; i < transport1.length; i++) ...[
+              //  for transport1 image
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: SizedBox(
+                  height: 250,
+                  child: Card(
+                    elevation: 5,
+                    shadowColor: Colors.red,
+                    child: Column(
                       children: [
-                        Text(
-                          animals[index]["name"],
-                          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                        ClipRRect(
+                          borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(10),
+                            topRight: Radius.circular(10),
+                          ),
+                          child: Image.asset(
+                            transport1[i]["image"],
+                            width: double.infinity,
+                            height: 200,
+                            fit: BoxFit.fill, // image ko fit karne ke liye
+                          ),
                         ),
-                        Text(
-                          animals[index]["hindi"],
-                          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                        Expanded(
+                          child: Container(
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              borderRadius: const BorderRadius.only(
+                                bottomLeft: Radius.circular(10),
+                                bottomRight: Radius.circular(10),
+                              ),
+                              border: Border.all(width: 2, color: Colors.red),
+                            ),
+                            child: Align(
+                              alignment: Alignment.bottomCenter,
+                              child: Text(
+                                transport1[i]["title"],
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 25),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ),
                         ),
                       ],
                     ),
-                  ],
+                  ),
                 ),
               ),
-            ),
-          );
-        },
+
+              // Transport2
+              GridView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: 2,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2 // Number of columns
+                    ),
+                itemBuilder: (BuildContext context, int index) {
+                  int transport1Index = i * 2 + index;
+                  if (transport1Index >= transport2.length) return Container();
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 10.0, vertical: 10),
+                    child: Card(
+                      elevation: 5,
+                      shadowColor: Colors.red,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Image.asset(
+                            transport2[transport1Index]["image"],
+                            width: double.infinity,
+                            height: 120,
+                            fit: BoxFit.fill,
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text(
+                                transport2[transport1Index]["name"],
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ],
+          ],
+        ),
       ),
     );
   }

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "550903779760",
+    "project_id": "babybook-efc90",
+    "storage_bucket": "babybook-efc90.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:550903779760:android:0a1b97d404800faf608675",
+        "android_client_info": {
+          "package_name": "com.example.baby_book"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAiysIBjDpd6X5P-k4V1i9xmXXY2Ld5s0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
