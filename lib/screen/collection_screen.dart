@@ -2,6 +2,7 @@ import 'package:baby_book/screen/a_for_apple_screen.dart';
 import 'package:baby_book/screen/animal_screen.dart';
 import 'package:baby_book/screen/body_parts_screen.dart';
 import 'package:baby_book/screen/english_poems_screen.dart';
+import 'package:baby_book/screen/flower_screen.dart';
 import 'package:baby_book/screen/fruits_screen.dart';
 import 'package:baby_book/screen/hindi_book_screen.dart';
 import 'package:baby_book/screen/multiplication_table.dart';
@@ -27,7 +28,7 @@ class _CollectionScreenState extends State<CollectionScreen> {
     {"image": Image.asset("assets/body/body.jpg"), "title": "Body part"},
     {"image": Image.asset("assets/fruits/mix.png"), "title": "Fruits"},
     {"image": Image.asset("assets/transport/mix.png"), "title": "Transport"},
-    {"image": Image.asset("assets/images/zoo.png"), "title": "English Book"},
+    {"image": Image.asset("assets/images/rose.png"), "title": "Flower" },
     {"image": Image.asset("assets/images/zoo.png"), "title": "English Book"},
     {"image": Image.asset("assets/images/zoo.png"), "title": "English Book"},
     {"image": Image.asset("assets/images/zoo.png"), "title": "English Book"},
@@ -99,6 +100,11 @@ class _CollectionScreenState extends State<CollectionScreen> {
                     context,
                     MaterialPageRoute(
                         builder: (context) => const TransportScreen()));
+              }else if (collection[index]["title"] == "Flower") {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>  FlowerScreen()));
               }
             },
             child: Card(

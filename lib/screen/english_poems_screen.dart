@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class EnglishPoemsScreen extends StatelessWidget {
@@ -68,7 +67,7 @@ class EnglishPoemsScreen extends StatelessWidget {
                   ),
                   Text(
                     poems[index]["title"],
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                   ),
                  const SizedBox(
                     height: 10,

@@ -1,25 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Firestore Example',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: FlowerScreen(),
-    );
-  }
-}
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class FlowerScreen extends StatefulWidget {
   @override
@@ -36,8 +17,8 @@ class _FlowerScreenState extends State<FlowerScreen> {
   }
 
   Future<void> fetchFlowerData() async {
-    FirebaseFirestore firestore = FirebaseFirestore.instance;
-    CollectionReference collectionRef = firestore.collection('babyData');
+    FirebaseFirestore fireStore = FirebaseFirestore.instance;
+    CollectionReference collectionRef = fireStore.collection('babyData');
 
     QuerySnapshot querySnapshot = await collectionRef.get();
     final List<Map<String, String>> loadedFlowers = [];
@@ -87,7 +68,7 @@ class _FlowerScreenState extends State<FlowerScreen> {
                   child: Text(
                     flowers[index]['name']!,
                     textAlign: TextAlign.center,
-                    style: const TextStyle(fontSize: 16),
+                    style: const TextStyle(fontSize: 20),
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                   ),
