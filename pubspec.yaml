@@ -40,6 +40,8 @@ dependencies:
   cloud_firestore: ^5.2.1
   lottie: ^3.1.2
   firebase_auth: ^5.1.2
+  curved_navigation_bar: ^1.0.6
+  video_player: ^2.9.1
 
 dev_dependencies:
   flutter_test:
@@ -54,6 +56,9 @@ dev_dependencies:
 #  audio file add
   audioplayers: ^6.0.0
 #  auth
+
+
+
 
 
 # For information on the generic Dart part of this file, see the

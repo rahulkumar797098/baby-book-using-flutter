@@ -2,7 +2,9 @@
 import 'package:baby_book/screen/authentication/login_screen.dart';
 import 'package:baby_book/screen/authentication/signup_screen.dart';
 import 'package:baby_book/screen/collection_screen.dart';
+import 'package:baby_book/screen/intro/parents_child_screen.dart';
 import 'package:baby_book/screen/intro/start_screen.dart';
+import 'package:baby_book/screen/parents/dashbord_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -30,7 +32,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:StartScreen()
+      home:const StartScreen()
     );
   }
 }

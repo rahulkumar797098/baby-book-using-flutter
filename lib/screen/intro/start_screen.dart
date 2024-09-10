@@ -1,5 +1,6 @@
 import 'package:baby_book/screen/authentication/login_screen.dart';
 import 'package:baby_book/screen/collection_screen.dart';
+import 'package:baby_book/screen/intro/parents_child_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -28,7 +29,7 @@ class _StartScreenState extends State<StartScreen> {
           InkWell(
             onTap: () {
               Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => LoginScreen()));
+                  MaterialPageRoute(builder: (context) => const ParentsChildScreen()));
             },
             child: Container(
               width: 300,

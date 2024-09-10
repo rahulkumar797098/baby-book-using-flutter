@@ -93,7 +93,7 @@ class _SignupScreenState extends State<SignupScreen> {
                             alignment: Alignment.center,
                           ),
                         ),
-                        const SizedBox(height: 30),
+                        const SizedBox(height: 10),
                         const Text(
                           "Join Baby's Reading Journey",
                           style: TextStyle(

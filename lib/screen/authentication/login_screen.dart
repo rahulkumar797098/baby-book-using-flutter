@@ -1,5 +1,6 @@
 import 'package:baby_book/screen/authentication/signup_screen.dart';
 import 'package:baby_book/screen/collection_screen.dart';
+import 'package:baby_book/screen/parents/dashbord_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -12,7 +13,8 @@ class LoginScreen extends StatefulWidget {
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStateMixin {
+class _LoginScreenState extends State<LoginScreen>
+    with SingleTickerProviderStateMixin {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   bool _isPasswordVisible = false;
@@ -23,7 +25,8 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
   @override
   void initState() {
     super.initState();
-    mController = AnimationController(vsync: this, duration: const Duration(seconds: 10));
+    mController =
+        AnimationController(vsync: this, duration: const Duration(seconds: 10));
   }
 
   @override
@@ -45,12 +48,13 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
         // Successful login
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) =>  CollectionScreen()),
+          MaterialPageRoute(builder: (context) =>const DashBordScreen()),
         );
       } else {
         // Handle case where result is null
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Login failed. Please check your credentials.')),
+          const SnackBar(
+              content: Text('Login failed. Please check your credentials.')),
         );
       }
     } catch (e) {
@@ -75,13 +79,9 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
               ),
             ),
             child: Opacity(
-
               opacity: 0.2,
-
               child: Container(
                 color: Colors.black.withOpacity(0.2),
-
-
               ),
             ),
           ),
@@ -92,7 +92,6 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const SizedBox(height: 20),
-
                   Lottie.asset(
                     "assets/lottie/onetwothree.json",
                     height: 300,
@@ -100,7 +99,8 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                     alignment: Alignment.center,
                     fit: BoxFit.cover,
                     onLoaded: (lottie) {
-                      mController!.duration = lottie.duration * 2; // Slowing down the animation by 2x
+                      mController!.duration = lottie.duration *
+                          2; // Slowing down the animation by 2x
                       mController!.forward(); // Start the animation
                     },
                   ),
@@ -109,19 +109,26 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                     padding: EdgeInsets.all(10.0),
                     child: Text(
                       "Login to Your Baby's Reading Adventure",
-                      style: TextStyle(fontWeight: FontWeight.bold,
-                          shadows: [Shadow(color: Colors.red , blurRadius: 7 , offset: Offset(1.5, 1.0))],
-                          fontSize: 25, color: Colors.white),
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          shadows: [
+                            Shadow(
+                                color: Colors.red,
+                                blurRadius: 7,
+                                offset: Offset(1.5, 1.0))
+                          ],
+                          fontSize: 25,
+                          color: Colors.white),
                     ),
                   ),
-
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
                     child: SizedBox(
                       width: double.infinity,
                       child: Card(
                         elevation: 8,
-                        shadowColor: Colors.red,
+
+                        color: Colors.white54,
                         child: Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: Column(
@@ -184,7 +191,8 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                     ),
                                     onPressed: () {
                                       setState(() {
-                                        _isPasswordVisible = !_isPasswordVisible;
+                                        _isPasswordVisible =
+                                            !_isPasswordVisible;
                                       });
                                     },
                                   ),
@@ -196,9 +204,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                       ),
                     ),
                   ),
-
                   const SizedBox(height: 30),
-
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
                     child: Row(
@@ -211,24 +217,28 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                             onPressed: _login,
                             style: ElevatedButton.styleFrom(
                               elevation: 10,
-                              side: const BorderSide(width: 1, color: Colors.green),
+                              side: const BorderSide(
+                                  width: 1, color: Colors.green),
                               shadowColor: Colors.red,
                               shape: const RoundedRectangleBorder(
-                                borderRadius: BorderRadius.only(bottomRight: Radius.circular(30) , topRight: Radius.circular(30) , bottomLeft: Radius.circular(5) , topLeft: Radius.circular(5)),
+                                borderRadius: BorderRadius.only(
+                                    bottomRight: Radius.circular(30),
+                                    topRight: Radius.circular(30),
+                                    bottomLeft: Radius.circular(5),
+                                    topLeft: Radius.circular(5)),
                               ),
                             ),
                             child: const Text(
                               "Login",
-                              style: TextStyle(fontSize: 30, color: Colors.green),
+                              style:
+                                  TextStyle(fontSize: 30, color: Colors.green),
                             ),
                           ),
                         ),
                       ],
                     ),
                   ),
-
                   const SizedBox(height: 40),
-
                   SizedBox(
                     width: double.infinity,
                     child: Row(
@@ -238,7 +248,9 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                           "Don't have an account?",
                           style: TextStyle(fontSize: 20, color: Colors.white),
                         ),
-                        const SizedBox(width: 10,),
+                        const SizedBox(
+                          width: 10,
+                        ),
                         OutlinedButton(
                           onPressed: () {
                             Navigator.push(
@@ -249,7 +261,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                             );
                           },
                           style: OutlinedButton.styleFrom(
-                            side: const BorderSide(width: 2 , color: Colors.red),
+                            side: const BorderSide(width: 2, color: Colors.red),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(5),
                             ),
