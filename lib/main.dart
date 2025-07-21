@@ -12,17 +12,19 @@ import 'package:flutter/material.dart';
 import 'firebase_options.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized() ;
+  WidgetsFlutterBinding.ensureInitialized();
+  print('Initializing Firebase...');
   await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform
+    options: DefaultFirebaseOptions.currentPlatform,
   );
+  print('Firebase Initialized');
   runApp(const MyApp());
 }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
